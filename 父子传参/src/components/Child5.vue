@@ -1,28 +1,30 @@
 <template>
 	<div>
-		{{ data }}
-		<button @click="updateData('修改后的测试1')">修改</button>
+		{{ modelValue }}
+		<button @click="change('修改后的测试5')">修改</button>
 	</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+
 export default defineComponent({
 	props: {
-		data: {
+		modelValue: {
 			type: String,
 			default: () => ''
 		}
 	},
 	setup(props, { emit }) {
-		const updateData = (val: any) => {
-			emit('update-data', val)
+		const change = (newValue: string) => {
+			emit('update:modelValue', newValue)
 		}
+
 		return {
-			updateData
+			change
 		}
 	}
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
